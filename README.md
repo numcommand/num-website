@@ -8,14 +8,14 @@ This content is published to http://www.numcommand.com
 
 This is simple publishing process:
 
-1. A pandoc scripts to convert the Num repo's documenation from markdown files to HTML files.
+1. A pandoc script converts the Num repo's documenation files from markdown files to HTML files.
 
-2. A rsync script to sync the HTML files from the local system to the canon system (i.e. the public website). There's a complementary script to rsync the HTML files from the canon system (i.e. the public website) to the local site.
+2. A rsync script syncs the HTML files from the local system (i.e. development)to the canonical public website system (i.e. production).
 
 There's probably a better way to do this. Suggestions welcome.
 
 To publish the website:
 
     $ cd bin
-    $ pandoc-site
-    $ rsync-local-to-canon
+    $ ./pandoc-site
+    $ ./rsync-development-to-production

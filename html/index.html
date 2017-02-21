@@ -39,9 +39,17 @@
 <p>Example:</p>
 <pre><code>$ num sum median variance stddev data.txt
 10 2.5 1.66667 1.29099</code></pre>
-<p>Install:</p>
-<pre><code>sudo curl -sSL https://raw.githubusercontent.com/numcommand/num/blob/master/bin/num -o /usr/local/bin/num &amp;&amp; sudo chmod +x /usr/local/bin/num &amp;&amp; (command -v uname &gt;/dev/null 2&gt;&amp;1) &amp;&amp; (uname | grep -q Darwin) &amp;&amp; (command -v brew &gt;/dev/null 2&gt;&amp;1) &amp;&amp; (brew ls --versions gawk | grep -q gawk) || brew install gawk</code></pre>
-<p>For more on how to install please see the <a href="doc/install.html">Install page</a>. <br>To troubleshoot please see the <a href="doc/troubleshooting.html">Troubleshooting page</a>.</p>
+<h2 id="dependencies">Dependencies</h2>
+<ul>
+<li>
+<a href="https://www.gnu.org/software/gawk/">gawk</a>
+</li>
+</ul>
+<h2 id="install">Install</h2>
+<pre><code>$ git clone git@github.com:numcommand/num.git
+$ cd num
+$ bin/install.sh # for help =&gt; bin/install.sh --help</code></pre>
+<p><br>To troubleshoot please see the <a href="doc/troubleshooting.html">Troubleshooting page</a>.</p>
 <p>Start using Num:</p>
 <ul>
 <li><a href="doc/tutorial.html">Tutorial: quick start, input, output, variables, options, …</a></li>

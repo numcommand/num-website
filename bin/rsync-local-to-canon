@@ -1,1 +1,0 @@
-nice rsync -auHOxzvi /var/www/www.numcommand.com/ joel@numcommand.com:/var/www/www.numcommand.com/
