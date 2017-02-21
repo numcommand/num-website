@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <link rel="icon" type="image/png" href="http://www.numcommand.com/assets/images/icons/num-icon-32.png">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="/assets/css/pandoc.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/retina.js/1.3.0/retina.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.7/jquery.lazyload.min.js"></script>
+</head>
+<body>
+
+<nav>
+  <b>
+    <a href="/">NumCommand.com</a> &bull;
+    <a href="/doc/install.html">Install</a> &bull;
+    <a href="/doc/tutorial.html">Tutorial</a> &bull;
+    <a href="/doc/functions.html">Functions</a> &bull;
+    <a href="/doc/helpers.html">Helpers</a> &bull;
+    <a href="/doc/articles.html">Articles</a> &bull;
+    <a href="/doc/faq.html">FAQ</a> &bull;
+    <a href="/doc/donate.html">Donate</a>
+  </b>
+</nav>
+<hr />
+
+<p><img width="960" height="550" src="assets/images/splash/splash-960x550.jpg" /></p>
+<h1 id="num-number-utilities-for-mathematics">Num: number utilities for mathematics</h1>
+<p>Num is a command line tool for mathematics and statistics data processing. <br>Num can calculate sum, median, quartiles, standard deviation, and much more. <br>Num can sort, map, filter, round, and use various input/output formats.</p>
+<p><a href="https://www.patreon.com/num">Num on Patreon: donate to help</a> <br><a href="https://twitter.com/NumCommand">Num on Twitter: <span class="citation" data-cites="numcommand">@numcommand</span></a> <br><a href="http://www.numcommand.com">Num on the web: www.numcommand.com</a></p>
+<p>Example:</p>
+<pre><code>$ num sum median variance stddev data.txt
+10 2.5 1.66667 1.29099</code></pre>
+<p>Install:</p>
+<pre><code>sudo curl -sSL https://raw.githubusercontent.com/numcommand/num/blob/master/bin/num -o /usr/local/bin/num &amp;&amp; sudo chmod +x /usr/local/bin/num &amp;&amp; (command -v uname &gt;/dev/null 2&gt;&amp;1) &amp;&amp; (uname | grep -q Darwin) &amp;&amp; (command -v brew &gt;/dev/null 2&gt;&amp;1) &amp;&amp; (brew ls --versions gawk | grep -q gawk) || brew install gawk</code></pre>
+<p>For more on how to install please see the <a href="doc/install.html">Install page</a>. <br>To troubleshoot please see the <a href="doc/troubleshooting.html">Troubleshooting page</a>.</p>
+<p>Start using Num:</p>
+<ul>
+<li><a href="doc/tutorial.html">Tutorial: quick start, input, output, variables, options, …</a></li>
+<li><a href="doc/functions.html">Functions: sum, min, max, var, iqr, sort, round, normalize, …</a></li>
+<li><a href="doc/helpers.html">Helpers: awk, cut, sed, seq, wc, head, tail, parallel, …</a></li>
+<li><a href="doc/articles.html">Articles &amp; Blogs: Unix, EDA, Datamash, qstats, MOOCs, …</a></li>
+<li><a href="doc/faq.html">FAQ: how to help, feature roadmap, …</a></li>
+</ul>
+<p>Project pages:</p>
+<ul>
+<li><a href="doc/donate.html">Donate: using PayPal, Patreon, Bitcoin, GitHub, etc.</a></li>
+<li><a href="doc/thanks.html">Thanks: our coders, advisors, sponsors, donors, and helpers</a></li>
+<li><a href="doc/comparisons.html">Comparisons: when to use Num vs. other tools, such as C, R, Python, etc.</a></li>
+<li><a href="doc/benchmarks.html">Benchmarks</a></li>
+<li><a href="doc/todo.html">To do</a></li>
+<li><a href="doc/known-issues.html">Known issues</a></li>
+</ul>
+<p>Programmer pages:</p>
+<ul>
+<li><a href="doc/programmer-guide.html">Programmer guide</a></li>
+<li><a href="doc/programmer-library-of-awk-functions.html">Programmer library of awk functions</a></li>
+<li><a href="doc/files.html">Files</a></li>
+<li><a href="doc/build.html">Build</a></li>
+<li><a href="doc/test.html">Test</a></li>
+<li><a href="doc/porting.html">Porting to more languages</a></li>
+</ul>
+<p>Statistics help:</p>
+<ul>
+<li><a href="http://debrouwere.org/2017/02/01/unlearning-descriptive-statistics/">Unlearning descriptive statistics</a></li>
+</ul>
+<p>By <a href="http://www.joelparkerhenderson.com">Joel Parker Henderson</a></p>
+<br><br><br><br>
+</body>
+</html>

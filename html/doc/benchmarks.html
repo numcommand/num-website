@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <link rel="icon" type="image/png" href="http://www.numcommand.com/assets/images/icons/num-icon-32.png">
+  <title>Benchmarks</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="/assets/css/pandoc.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/retina.js/1.3.0/retina.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.7/jquery.lazyload.min.js"></script>
+</head>
+<body>
+
+<nav>
+  <b>
+    <a href="/">NumCommand.com</a> &bull;
+    <a href="/doc/install.html">Install</a> &bull;
+    <a href="/doc/tutorial.html">Tutorial</a> &bull;
+    <a href="/doc/functions.html">Functions</a> &bull;
+    <a href="/doc/helpers.html">Helpers</a> &bull;
+    <a href="/doc/articles.html">Articles</a> &bull;
+    <a href="/doc/faq.html">FAQ</a> &bull;
+    <a href="/doc/donate.html">Donate</a>
+  </b>
+</nav>
+<hr />
+
+<h1 id="benchmarks">Benchmarks</h1>
+<p>Num calculates at a speed of approximately one million numbers per second using a typical Mac laptop.</p>
+<h2 id="how-we-benchmark">How we benchmark</h2>
+<p>Generate a million random numbers and write them to a file:</p>
+<pre><code>hexdump -n 4000000 -v -e &#39;1/4 &quot;%u\n&quot;&#39; /dev/urandom &gt; data</code></pre>
+<p>Time the Num command:</p>
+<pre><code>time ( num sum data )
+... 0.788 total</code></pre>
+<p>Time the Num command with more statistics:</p>
+<pre><code>time ( num sum mean variance standarddeviation data )
+... 0.964 total</code></pre>
+<p>Your actual speed may vary. Num speed depends on many factors, such as which <code>awk</code> implemenation is in use, which computer you choose to use, which statitics you choose to calculate, which other software you're running simultaneously, etc.</p>
+<h2 id="comparisons">Comparisons</h2>
+<p>Comparisons of similar solutions using <code>awk</code>, <code>gawk</code>, <code>mawk</code>, and <code>perl</code>.</p>
+<pre><code>time ( awk &#39;{ x += $1 }&#39; data )
+... 1.050 total
+
+time ( gawk &#39;{ x += $1 }&#39; data )
+... 0.396 total
+
+time ( mawk &#39;{ x += $1 }&#39; data )
+... 0.195 total
+
+time ( perl -ne &#39;$x += $_&#39; data)
+... 0.200 total</code></pre>
+<p>Summary:</p>
+<ul>
+<li><p>mawk is .2</p></li>
+<li><p>gawk is .4</p></li>
+<li><p>awk is 1.0</p></li>
+</ul>
+<p>Details:</p>
+<ul>
+<li><p>This is using Apple OS X 10.10.5 on a typical MacBook Pro laptop.</p></li>
+<li><p>The <code>awk</code> command is the OS X default one: OS X 10.10 <code>awk</code> version 20070501.</p></li>
+<li><p>The <code>gawk</code> and <code>mawk</code> commands are installed by using <code>brew</code>.</p></li>
+</ul>
+<p>Caveats:</p>
+<ul>
+<li><p>For statistics that use ranking, such as median and trimean, Num is approximately the same speed as the awk implementation.</p></li>
+<li><p>For statistics that do not use ranking, such as sum or mean, then Num is approximately 2x-time as the awk implementation. This is primarliy because Num stores all the numbers in an array, whereas awk code doesn't store the numbers. We plan to optimize this for Num 2.0.</p></li>
+</ul>
+<p>
+<hr>
+<p><nav> * <b><a href="doc/comparisons.html">Prev Page: Comparisons: when to use Num vs. other tools, such as C, R, Python, etc.</a></b> * <b><a href="todo.html">Next Page: To do</a></b> </nav></p>
+<br><br><br><br>
+</body>
+</html>

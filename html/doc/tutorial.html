@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <link rel="icon" type="image/png" href="http://www.numcommand.com/assets/images/icons/num-icon-32.png">
+  <title>Tutorial</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="/assets/css/pandoc.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/retina.js/1.3.0/retina.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.7/jquery.lazyload.min.js"></script>
+</head>
+<body>
+
+<nav>
+  <b>
+    <a href="/">NumCommand.com</a> &bull;
+    <a href="/doc/install.html">Install</a> &bull;
+    <a href="/doc/tutorial.html">Tutorial</a> &bull;
+    <a href="/doc/functions.html">Functions</a> &bull;
+    <a href="/doc/helpers.html">Helpers</a> &bull;
+    <a href="/doc/articles.html">Articles</a> &bull;
+    <a href="/doc/faq.html">FAQ</a> &bull;
+    <a href="/doc/donate.html">Donate</a>
+  </b>
+</nav>
+<hr />
+
+<h1 id="tutorial">Tutorial</h1>
+<h2 id="quick-start">Quick start</h2>
+<p>Tell Num what you want to calculate and an input file:</p>
+<pre><code>$ num sum data.txt
+45</code></pre>
+<p>You can pipe data:</p>
+<pre><code>$ echo &quot;1 2 3 4 5 6 7 8 9&quot; | num sum
+45</code></pre>
+<p>You can use AWK variables:</p>
+<pre><code>$ AWK=&quot;/bin/mawk&quot; FS=&quot;,&quot; OFS=&quot;,&quot; OFMT=&quot;%.0f&quot; num records data.csv &gt; rounded.csv</code></pre>
+<p>See the complete list of <a href="functions.html">functions</a>.</p>
+<h2 id="example-data">Example data</h2>
+<p>The rest of this tutorial will use this example data file:</p>
+<pre><code>$ cat data.txt
+1 2 3
+4 5 6
+7 8 9</code></pre>
+<h2 id="inputouput">Input/Ouput</h2>
+<p>You can use standard input:</p>
+<pre><code>$ cat data.txt | num sum
+45</code></pre>
+<p>You can use files:</p>
+<pre><code>$ num sum data.txt
+45</code></pre>
+<p>You can use records a.k.a. rows:</p>
+<pre><code>$ num sum records data.txt
+6
+15
+24</code></pre>
+<p>You can use a custom output format (OFMT):</p>
+<pre><code>$ OFMT=&quot;%.4f&quot; num sum data.txt
+45.0000</code></pre>
+<p>You can use input/output separators for fields, records, and data exchange formats including CSV, TSV, USV. See <a href="input-output-separators.html">Input/Output Separators</a>.</p>
+<h2 id="command-line-options">Command line options</h2>
+<p>Num has many command line options.</p>
+<p>You can use dashes, underscores, or not:</p>
+<pre><code>sum-of-squares
+sum_of_squares
+sumofsquares</code></pre>
+<p>You can use any capitialization such as:</p>
+<pre><code>sumofsquares
+SumOfSquares
+SUMOFSQUARES</code></pre>
+<p>You can use full words or abbreviations such as:</p>
+<pre><code>standarddeviation
+stddev
+sd</code></pre>
+<p>The word &quot;sample&quot; can be abbreviated &quot;s&quot;:</p>
+<pre><code>samplevariance
+svar</code></pre>
+<p>The word &quot;population&quot; can be abbreviated &quot;p&quot;:</p>
+<pre><code>populationvariance
+pvar</code></pre>
+<p>The words &quot;coefficient of&quot; can be abbreviated &quot;co&quot;:</p>
+<pre><code>coefficientofvariance
+covar</code></pre>
+<h2 id="command-line-awk-options">Command line awk options</h2>
+<p>Num uses the <code>awk</code> language, which comes in several flavors.</p>
+<ul>
+<li><p>On modern Linux systems, the <code>awk</code> language is provided by the GNU awk command a.k.a. <code>gawk</code>.</p></li>
+<li><p>On modern OS X systems, the <code>awk</code> language is provided by the BSD awk command. However, the implementation is older and doesn't work for Num. The solution is to install <code>gawk</code>. The typicall way to install is by running <code>brew install gawk</code>.</p></li>
+<li><p>On other modern POSIX-compliant systems, you may need to download <code>gawk</code> from the <a href="http://gnu.org">GNU website</a> and compile it for your systems.</p></li>
+</ul>
+<p>If you want to explicity tell Num which <code>awk</code> command to use, then you can provide a custom path by setting the <code>AWK</code> environment variable like this:</p>
+<pre><code>AWK=/example/awk num ...</code></pre>
+<h2 id="awk-implementations">AWK implementations</h2>
+<p>Num chooses which awk implementation to use by using this order of importance:</p>
+<ul>
+<li><p>ENV var, for example: AWK=&quot;/example/awk&quot; num ... This way gives the user complete control of which awk to use.</p></li>
+<li><p>GNU awk a.k.a. <code>gawk</code>. Available on all modern GNU Linux systems. GNU awk provides more than POSIX, such as <code>asort()</code> and <code>length()</code>. Note that Ubuntu Linux preinstalls <code>mawk</code> not <code>gawk</code>.</p></li>
+<li><p>Default awk. This is the most common awk, especially on old systems, as well on curent Mac OSX systems and similar kinds of BSD systems. The default awk is typically inferior to newer awk implementations. The default awk is defined by POSIX and therefore has to exist on all POSIX-conformant systems.</p></li>
+</ul>
+<p>TODO:</p>
+<ul>
+<li><p>mawk. Standard on Ubuntu and people say it's up to 8x faster. We're currently working on mawk compatibility, and we believe everything works except for sorting functions, such as median. The short-term workaround is to pipe to <code>sort</code> before <code>num</code>.</p></li>
+<li><p>nawk - while the AWK language was being developed the authors released a new version (hence the n - new awk) to avoid confusion.</p></li>
+</ul>
+<h2 id="real-world-examples">Real World Examples</h2>
+<h3 id="how-to-select-lines">How to select lines</h3>
+<p>Select the first 10 lines:</p>
+<pre><code>head -10</code></pre>
+<p>Select the last 10 lines:</p>
+<pre><code>tail -10</code></pre>
+<p>Select lines starting with line 10 onward:</p>
+<pre><code>tail +2</code></pre>
+<p>Delete line 1:</p>
+<pre><code>sed &#39;1d&#39;</code></pre>
+<p>Select lines that have digits:</p>
+<pre><code>grep &#39;[0-9]&#39;</code></pre>
+<p>Delete lines that have a negative sign:</p>
+<pre><code>grep -v &#39;-&#39;</code></pre>
+<p>Select field 3 delimited by a space:</p>
+<pre><code>cut -f 3 -d &#39; &#39;</code></pre>
+<p>Select field 3 delimited by spaces and tabs:</p>
+<pre><code>awk &#39;{print $3}&#39;</code></pre>
+<p>Select lines between X inclusive and Y inclusive:</p>
+<pre><code>sed -n &#39;/x/,/y/p&#39;</code></pre>
+<h3 id="how-much-data-is-in-a-directory">How much data is in a directory?</h3>
+<p>We list the current directory's files, then choose the size column, then calculate:</p>
+<pre><code>$ ls -l | awk &#39;{print $5}&#39; | num min max mean
+265 38684 2378.23</code></pre>
+<h3 id="how-busy-is-the-computer">How busy is the computer?</h3>
+<p>We print the current system processes, then choose the CPU column, then calculate:</p>
+<pre><code>$ ps aux | awk &#39;{print $3}&#39; | num min max mean
+0.0 100.1 0.513028</code></pre>
+<h3 id="how-wet-is-the-weather-in-new-york-city">How wet is the weather in New York City?</h3>
+<p>We download weather data for two days then parse humidities.</p>
+<pre><code>$ curl http://w1.weather.gov/data/obhistory/KNYC.html |
+tr &quot;&gt;&quot; &quot;\n&quot; | sed -n &#39;s/^\([0-9]\+\)%.*/\1/p&#39; |
+num min max mean
+32 84 58.4167</code></pre>
+<h3 id="how-expensive-is-a-one-bedroom-apartment-in-san-francisco">How expensive is a one-bedroom apartment in San Francisco?</h3>
+<p>We connect to the Craigslist website then parse prices.</p>
+<pre><code>$ curl -s http://sfbay.craigslist.org/search/sfc/apa\?min_price\=1\&amp;bedrooms\=1 |
+sed &#39;s/\(&lt;p class=&quot;row&quot;\)/\n\1/g&#39; |
+grep &#39; 1br &#39; |
+tr &quot;&gt;&quot; &quot;\n&quot; |
+sed -n &#39;s/^\$\([0-9]\+\).*/\1/p&#39; |
+num mean median interquartile-range standard-deviation OFMT=&quot;%.0d&quot;
+3226 3300 641 815</code></pre>
+<p>
+<hr>
+<p><nav> * <b><a href="install.html">Prev Page: Install</a></b> * <b><a href="functions.html">Next Page: Functions</a></b> </nav></p>
+<br><br><br><br>
+</body>
+</html>

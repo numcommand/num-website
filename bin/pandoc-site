@@ -1,0 +1,30 @@
+#!/bin/bash
+
+root_src=~/git/numcommand/num
+root_dst=~/git/numcommand/num-website/html
+
+pandoc_(){
+    pandoc "$1" -o "$2" -V pagetitle="$3" --to=html5 --template="$root_dst/conf/pandoc/templates/numcommand" --css "/assets/css/pandoc.css"
+}
+
+markdown_file_title(){
+    sed -n 's/^# \+\(.*\)/\1/p;q' "$1"
+}
+
+pandoc_ $root_src/README.md $root_dst/index.html
+
+find $root_src/doc -type f -name "*.md" |
+    while read file_src; do
+        #echo $file_src
+        file_mid=${file_src##*/git/numcommand/num/}
+        file_mid=${file_mid%%.md}
+        file_dst="$root_dst/$file_mid.html"
+        title=$(markdown_file_title "$file_src")
+        pandoc_ "$file_src" "$file_dst" "$title"
+    done
+
+# Change links from markdown to html
+sed -i 's/\.md">/.html">/g' $root_dst/index.html $root_dst/doc/*.html $root_dst/doc/functions/*.html
+
+# Change home page image size
+sed -i 's/<img width="750" height="430"/<img width="960" height="550"/; s/splash-750x430.jpg/splash-960x550.jpg/' $root_dst/index.html

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <link rel="icon" type="image/png" href="http://www.numcommand.com/assets/images/icons/num-icon-32.png">
+  <title>Functions: the complete list of all capabilities</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="/assets/css/pandoc.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/retina.js/1.3.0/retina.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.7/jquery.lazyload.min.js"></script>
+</head>
+<body>
+
+<nav>
+  <b>
+    <a href="/">NumCommand.com</a> &bull;
+    <a href="/doc/install.html">Install</a> &bull;
+    <a href="/doc/tutorial.html">Tutorial</a> &bull;
+    <a href="/doc/functions.html">Functions</a> &bull;
+    <a href="/doc/helpers.html">Helpers</a> &bull;
+    <a href="/doc/articles.html">Articles</a> &bull;
+    <a href="/doc/faq.html">FAQ</a> &bull;
+    <a href="/doc/donate.html">Donate</a>
+  </b>
+</nav>
+<hr />
+
+<h1 id="functions-the-complete-list-of-all-capabilities">Functions: the complete list of all capabilities</h1>
+<h2 id="numbers-functions">Numbers Functions</h2>
+<h4 id="all">all</h4>
+<p>All the items.</p>
+<pre><code>echo &quot;1 2 4&quot; | num all
+1 2 4</code></pre>
+<h4 id="first">first</h4>
+<p>The first item.</p>
+<pre><code>echo &quot;1 2 4&quot; | num first
+1</code></pre>
+<h4 id="last">last</h4>
+<p>The last item.</p>
+<pre><code>echo &quot;1 2 4&quot; | num last
+4</code></pre>
+<h4 id="n-count-length-size">n, count, length, size</h4>
+<p>The number of items.</p>
+<pre><code>echo &quot;1 2 4&quot; | num n
+3</code></pre>
+<h4 id="minimum-min">minimum, min</h4>
+<p>The minimum value.</p>
+<pre><code>echo &quot;1 2 4&quot; | num minimum
+1</code></pre>
+<h4 id="maximum-max">maximum, max</h4>
+<p>The maximum value.</p>
+<pre><code>echo &quot;1 2 4&quot; | num maximum
+1</code></pre>
+<h4 id="range-interval-breadth-spread">range, interval, breadth, spread</h4>
+<p>The range, which is maximum - minimum.</p>
+<pre><code>echo &quot;1 2 4&quot; | num range
+3</code></pre>
+<h3 id="frequency-minimum">frequency minimum</h3>
+<p>The frequency minimum. Count occurances of each value, and return the minimum count.</p>
+<pre><code>echo &quot;10 10 11 11 11&quot;
+2</code></pre>
+<h3 id="frequency-maximum">frequency maximum</h3>
+<p>The frequency maximum. Count occurances of each value, and return the maximum count.</p>
+<pre><code>echo &quot;10 10 11 11 11&quot;
+3</code></pre>
+<h4 id="sum-total">sum, total</h4>
+<p>The sum total of all the items.</p>
+<pre><code>echo &quot;1 2 4&quot; | num sum
+7</code></pre>
+<h4 id="product">product</h4>
+<p>The product all the items.</p>
+<pre><code>echo &quot;1 2 4&quot; | num product
+8</code></pre>
+<h2 id="mean">Mean</h2>
+<h4 id="mean-average-avg">mean, average, avg</h4>
+<p>The arithmetic mean a.ka. average.</p>
+<pre><code>echo &quot;1 2 4&quot; | num mean
+2.33333</code></pre>
+<h4 id="mean-absolute-deviation-mad">mean-absolute-deviation, mad</h4>
+<p>The average distance between each value and the mean.</p>
+<pre><code>echo &quot;1 2 4&quot; | num mean-absolute-deviation
+1.11111</code></pre>
+<h4 id="meanest">meanest</h4>
+<p>The value that is closest numerically to the mean.</p>
+<pre><code>echo &quot;1 2 4&quot; | num meanest
+2</code></pre>
+<h4 id="trimean">trimean</h4>
+<p>The trimean.</p>
+<pre><code>echo &quot;1 2 4&quot; | num trimean
+8.875</code></pre>
+<p>The advantage of using the trimean vs. the mean: the trimean is robust to outliers. The trimean equals (quartile-1 + 2 * median + quartile-3) / 4.</p>
+<h2 id="median">Median</h2>
+<h4 id="median-med">median, med</h4>
+<p>The median.</p>
+<pre><code>echo &quot;1 2 3 4&quot; | num median
+2.5</code></pre>
+<h4 id="median-low-med-low">median-low, med-low</h4>
+<p>The low median, i.e. lesser of two middle values.</p>
+<pre><code>echo &quot;1 2 3 4&quot; | num median
+2</code></pre>
+<h4 id="median-high-med-high">median-high, med-high</h4>
+<p>The high median, i.e. greater of two middle values.</p>
+<pre><code>echo &quot;1 2 3 4&quot; | num median
+3</code></pre>
+<h2 id="mode">Mode</h2>
+<h4 id="modes">modes</h4>
+<p>The modes or UNDEF. TODO.</p>
+<p>Unimodal:</p>
+<pre><code>echo &quot;1 2 2 3&quot; | num modes
+2</code></pre>
+<p>Bimodal:</p>
+<pre><code>echo &quot;1 2 2 3 3&quot; | num modes
+2 3</code></pre>
+<p>Nonmodal:</p>
+<pre><code>echo &quot;1 2 3&quot; | num modes
+UNDEF</code></pre>
+<h4 id="mode-min">mode-min</h4>
+<p>The minimum value of the mode values or UNDEF. TODO.</p>
+<pre><code>echo &quot;1 1 2 2 3 3&quot; | num mode-min
+1</code></pre>
+<h4 id="mode-max">mode-max</h4>
+<p>The maximum value of the mode values or UNDEF. TODO.</p>
+<pre><code>echo &quot;1 1 2 2 3 3&quot; | num mode-high
+3</code></pre>
+<h2 id="sum-of">Sum Of</h2>
+<h4 id="sum-of-squares-ss">sum-of-squares, ss</h4>
+<p>The sum of squares, a.k.a. sum of each mean deviation to the power of 2.</p>
+<pre><code>echo &quot;1 2 4&quot; | num sum-of-squares
+4.66667</code></pre>
+<h4 id="sum-of-cubes">sum-of-cubes</h4>
+<p>The sum of cubes, a.k.a. sum of each mean deviation to the power of 3.</p>
+<pre><code>echo &quot;1 2 4&quot; | num sum-of-cubes
+2.22222</code></pre>
+<h4 id="sum-of-quads">sum-of-quads</h4>
+<p>The sum of quads, a.k.a. sum of each mean deviation to the power of 4.</p>
+<pre><code>echo &quot;1 2 4&quot; | num sum-of-quads
+10.8889</code></pre>
+<h2 id="distributions">Distributions</h2>
+<h4 id="variance-var">variance, var</h4>
+<p>The variance.</p>
+<pre><code>echo &quot;1 2 4&quot; | num variance
+2.33333</code></pre>
+<p>This calculates for a sample, not a population.</p>
+These are also available:
+<ul>
+<li>
+sample-variance, svar
+<li>
+population-variance, pvar
+</ul>
+<h4 id="standard-deviation-stdev-sd">standard-deviation, stdev, sd</h4>
+<p>The standard deviation (SD).</p>
+<pre><code>echo &quot;1 2 4&quot; | num standard-deviation
+1.52753</code></pre>
+<p>This calculates for a sample, not a population.</p>
+These are also available:
+<ul>
+<li>
+sample-standard-deviation, sstdev, ssd
+<li>
+population-standard-deviation, pstdev, psd
+</ul>
+<h4 id="coefficient-of-variance-covar-cv-relative-standard-deviation-rsd">coefficient-of-variance, covar, cv, relative-standard-deviation, rsd</h4>
+<p>The coefficient of variance (CV), a.k.a. relative standard deviation (RSD).</p>
+<pre><code>echo &quot;1 2 4&quot; | num coefficient-of-variance
+0.654654</code></pre>
+<p>This calculates for a sample, not a population.</p>
+These are also available:
+<ul>
+<li>
+sample-coefficient-of-variance, scovar, scv, sample-relative-standard-deviation, srsd
+<li>
+population-coefficient-of-variance, pcovar, pcv, population-relative-standard-deviation, prsd
+</ul>
+<h4 id="skewness-skew">skewness, skew</h4>
+<p>The skewness, e.g. the lack of symmetry.</p>
+<pre><code>echo &quot;1 2 4&quot; | num skewness
+1.11111</code></pre>
+<p>This calculates for a sample, not a population.</p>
+These are also available:
+<ul>
+<li>
+sample-skewness, sskew
+<li>
+population-skewness, pskew
+</ul>
+<h4 id="kurtosis-kurt">kurtosis, kurt</h4>
+<p>The kurtosis, e.g. the heaviness of a distribution's tails. Default uses sample, not population.</p>
+<pre><code>echo &quot;1 2 4&quot; | num kurtosis
+5.44444</code></pre>
+<p>This calculates for a sample, not a population.</p>
+<p>The kurtosis is sometimes described as a curve's &quot;peakness or flatness&quot;, or &quot;small shoulders or big shoulders&quot;.</p>
+These are also available:
+<ul>
+<li>
+sample-kurtosis, skurt
+<li>
+population-kurtosis, pkurt
+</ul>
+<h2 id="moments-about-the-mean">Moments about the mean</h2>
+<h4 id="second-moment-about-the-mean-2matm-sample-second-moment-about-the-mean-s2matm-population-second-moment-about-the-mean-p2matm">second-moment-about-the-mean, 2matm<br>sample-second-moment-about-the-mean, s2matm<br>population-second-moment-about-the-mean, p2matm</h4>
+<p>The second moment about the mean. A.k.a. variance.</p>
+<pre><code>echo &quot;1 2 4&quot; | num second-moment-about-the-mean
+2.33333</code></pre>
+<h4 id="third-moment-about-the-mean-3matm-sample-third-moment-about-the-mean-s3matm-population-third-moment-about-the-mean-p3matm">third-moment-about-the-mean, 3matm<br>sample-third-moment-about-the-mean, s3matm<br>population-third-moment-about-the-mean, p3matm</h4>
+<p>The third moment about the mean. A.k.a. skewness.</p>
+<pre><code>echo &quot;1 2 4&quot; | num third-moment-about-the-mean
+1.11111</code></pre>
+<h4 id="fourth-moment-about-the-mean-4matm-sample-fourth-moment-about-the-mean-s4matm-population-fourth-moment-about-the-mean-p4matm">fourth-moment-about-the-mean, 4matm<br>sample-fourth-moment-about-the-mean, s4matm<br>population-fourth-moment-about-the-mean, p4matm</h4>
+<p>The fourth moment about the mean. A.k.a. kurtosis.</p>
+<pre><code>echo &quot;1 2 4&quot; | num fourth-moment-about-the-mean
+5.44444</code></pre>
+<h2 id="quartiles">Quartiles</h2>
+<p>Quartiles divide an ordered data set into four equal parts.</p>
+<ul>
+<li>Q0 is the minimum.</li>
+<li>Q1 is the &quot;middle&quot; value in the first half of the rank-ordered data set.</li>
+<li>Q2 is the median value in the set.</li>
+<li>Q3 is the &quot;middle&quot; value in the second half of the rank-ordered data set.</li>
+<li>Q4 is the maximum.</li>
+</ul>
+<p>Num uses a weighted average to calculate quartiles, because this is robust. For details please see https://en.wikipedia.org/wiki/Quartile and the &quot;Method 3&quot; description.</p>
+<h4 id="interquartile-range-iqr-midspread-middle-fifty">interquartile-range, iqr, midspread, middle-fifty</h4>
+<p>The interquartile range. This is calculated by using Q3 - Q1.</p>
+<pre><code>echo &quot;6 7 15 36 39 40 41 42 43 47 49&quot; | interquartile-range
+22.5</code></pre>
+<p>Note that Num quartile calculations use the proportional smoothing algorithm, rather than a median value algorithm or removal of values algorithm. The proportional smoothing algorithm is more stable, and more useful especially for ongoing streams of statitiscs.</p>
+<h4 id="quartile-0-q0">quartile-0, q0</h4>
+<p>Quartile 0, a.k.a. minimum.</p>
+<pre><code>echo &quot;6 7 15 36 39 40 41 42 43 47 49&quot; | quartile-0
+6</code></pre>
+<h4 id="quartile-1-q1">quartile-1, q1</h4>
+<p>Quartile 1, a.k.a. lower quartile, 25th percentile.</p>
+<pre><code>echo &quot;6 7 15 36 39 40 41 42 43 47 49&quot; | quartile-1
+20.25</code></pre>
+<p>Note that Num quartile calculations for Q1 and Q3 use the proportional smoothing algorithm, rather than a median value algorithm or removal of values algorithm. The proportional smoothing algorithm is more stable, and more useful especially for ongoing streams of statitiscs.</p>
+<h4 id="quartile-2-q2">quartile-2, q2</h4>
+<p>Quartile 2, a.k.a. median, 50th percentile.</p>
+<pre><code>echo &quot;6 7 15 36 39 40 41 42 43 47 49&quot; | quartile-2
+40</code></pre>
+<h4 id="quartile-3-q3">quartile-3, q3</h4>
+<p>Quartile 3, a.k.a. upper quartile, 75th percentile.</p>
+<pre><code>echo &quot;6 7 15 36 39 40 41 42 43 47 49&quot; | quartile-3
+42.75</code></pre>
+<p>Note that Num quartile calculations for Q1 and Q3 use the proportional smoothing algorithm, rather than a median value algorithm or removal of values algorithm. The proportional smoothing algorithm is more stable, and more useful especially for ongoing streams of statitiscs.</p>
+<h4 id="quartile-4-q4">quartile-4, q4</h4>
+<p>Quartile 4, a.k.a. maximum.</p>
+<pre><code>echo &quot;6 7 15 36 39 40 41 42 43 47 49&quot; | quartile-4
+49</code></pre>
+<h2 id="transforms">Transforms</h2>
+<p>Transforms change the list.</p>
+<h4 id="sort">sort</h4>
+<p>Sort the items in ascending order.</p>
+<pre><code>echo &quot;3 1 2&quot; | num sort all
+1 2 3</code></pre>
+<h3 id="sort-ascending-sort-asc-sort-up">sort-ascending, sort-asc, sort-up</h3>
+<p>Sort items in ascending order.</p>
+<pre><code>echo &quot;3 1 2&quot; | num sort-ascending all
+1 2 3</code></pre>
+<h3 id="sort-descending-sort-desc-sort-down">sort-descending, sort-desc, sort-down</h3>
+<p>Sort items in descending order.</p>
+<pre><code>echo &quot;3 1 2&quot; | num sort-descending all
+3 2 1</code></pre>
+<h4 id="unique">unique</h4>
+<p>Keep unique values; omit the rest. TODO.</p>
+<pre><code>echo &quot;1 2 2 3 3 3&quot; | num unique all
+1 2 3</code></pre>
+<h4 id="difference-diff-interval">difference, diff, interval</h4>
+<p>The difference between each number and the next number. TODO.</p>
+<pre><code>echo &quot;2 3 1 5&quot; | num difference all
+1 -2 4</code></pre>
+<h2 id="mappings">Mappings</h2>
+<p>Mappings work on each value.</p>
+<h4 id="absolute-value-abs-magnitude">absolute-value, abs, magnitude</h4>
+<p>Convert to absolute value a.k.a. magnitude, positive numbers.</p>
+<pre><code>echo &quot;-1 1&quot; | num absolute-value all
+1 1</code></pre>
+<h4 id="sign">sign</h4>
+<p>Convert to sign, which is one of -1, 0, 1.</p>
+<pre><code>echo &quot;-8 0 8&quot; | num sign all
+-1 0 1</code></pre>
+<h3 id="increment">increment</h3>
+<p>Increment each value, i.e. add 1.</p>
+<pre><code>echo &quot;1 2 3&quot; | num increment all
+2 3 4</code></pre>
+<h4 id="normalize">normalize</h4>
+<p>Normalize each value to be within 0..1.</p>
+<pre><code>echo &quot;1 2 4&quot; | num normalize all
+0 0.333333 1</code></pre>
+<h2 id="rounding">Rounding</h2>
+<h4 id="round-round-towards-nearest-nint">round, round-towards-nearest, nint</h4>
+<p>Convert to nearest integer.<br></p>
+<pre><code>echo &quot;-1.9 1.9&quot; | num round all
+2 2</code></pre>
+<h4 id="round-off-round-towards-zero-truncate">round-off, round-towards-zero, truncate</h4>
+<p>Convert to integer by omitting the fractional part.<br></p>
+<pre><code>echo &quot;-1.9 1.9&quot; | num round-off all
+-1 1</code></pre>
+<h4 id="round-up-round-towards-positive-infinity-ceiling">round-up, round-towards-positive-infinity, ceiling</h4>
+<p>Convert to integer by rounding up.<br></p>
+<pre><code>echo &quot;-1.9 1.9&quot; | num round-up all
+-1 2</code></pre>
+<h4 id="round-down-round-towards-negative-infinity-floor">round-down, round-towards-negative-infinity, floor</h4>
+<p>Convert to integer by rounding down.<br></p>
+<pre><code>echo &quot;-1.9 1.9&quot; | num round-down all
+-2 1</code></pre>
+<h2 id="queries">Queries</h2>
+<p>Queries return TRUE as 1, or FALSE as 0.</p>
+<h4 id="is-unique">is-unique</h4>
+<p>Is each item unique?</p>
+<pre><code>echo &quot;1 2 3&quot; | num is-unique
+1
+
+echo &quot;2 2 2&quot; | num is-unique
+0</code></pre>
+<h4 id="is-ascending-is-asc">is-ascending, is-asc</h4>
+<p>Is the data ascending, i.e. each next number is greater or equal?</p>
+<pre><code>echo &quot;1 2 3&quot; | num is-ascending
+1
+
+echo &quot;3 2 1&quot; | num is-ascending
+0</code></pre>
+<h4 id="is-strictly-ascending-is-strict-asc">is-strictly-ascending, is-strict-asc</h4>
+<p>Is the data strictly ascending, i.e. each next number is greater?</p>
+<pre><code>echo &quot;1 2 3&quot; | num is-strictly-ascending
+1
+
+echo &quot;3 2 1&quot; | num is-strictly-ascending
+0</code></pre>
+<h4 id="is-non-ascending-is-non-asc">is-non-ascending, is-non-asc</h4>
+<p>Is the data non-ascending, i.e. some next number is lesser?</p>
+<pre><code>echo &quot;1 2 3&quot; | num is-non-ascending
+0
+
+echo &quot;3 2 1&quot; | num is-non-ascending
+1</code></pre>
+<h4 id="is-descending-is-desc">is-descending, is-desc</h4>
+<p>Is the data descending, i.e. each next number is lesser or equal?</p>
+<pre><code>echo &quot;3 2 1&quot; | num is-descending
+1
+
+echo &quot;1 2 3&quot; | num is-descending
+0</code></pre>
+<h4 id="is-strictly-descending-is-strict-desc">is-strictly-descending, is-strict-desc</h4>
+<p>Is the data strictly descending, i.e. each next number is lesser?</p>
+<pre><code>echo &quot;3 2 1&quot; | num is-strictly-descending
+1
+
+echo &quot;1 2 3&quot; | num is-strictly-descending
+0</code></pre>
+<h4 id="is-non-descending-is-non-desc">is-non-descending, is-non-desc</h4>
+<p>Is the data non-descending, i.e. some next number is greater?</p>
+<pre><code>echo &quot;3 2 1&quot; | num is-non-descending
+0
+
+echo &quot;1 2 3&quot; | num is-non-descending
+1</code></pre>
+<p>
+<hr>
+<p><nav> * <b><a href="tutorial.html">Prev Page: Tutorial</a></b> * <b><a href="helpers.html">Next Page: Helpers: command that work well with Num</a></b> </nav></p>
+<br><br><br><br>
+</body>
+</html>

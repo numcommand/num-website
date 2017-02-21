@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Examples: how to use Num for shell scripting</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="/assets/css/pandoc.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/retina.js/1.3.0/retina.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.7/jquery.lazyload.min.js"></script>
+</head>
+<body>
+
+<nav>
+  <b>
+    <a href="/">NumCommand.com</a> &bull;
+    <a href="/doc/install.html">Install</a> &bull;
+    <a href="/doc/examples.html">Examples</a> &bull;
+    <a href="/doc/functions.html">Functions</a> &bull;
+    <a href="/doc/faq.html">FAQ</a> &bull;
+    <a href="https://www.kickstarter.com/projects/joelparkerhenderson/num-number-utilities-for-mathematics">Kickstarter</a>
+  </b>
+</nav>
+<hr />
+
+<h1 id="examples-how-to-use-num-for-shell-scripting">Examples: how to use Num for shell scripting</h1>
+<h3 id="how-much-data-is-in-a-directory">How much data is in a directory?</h3>
+<p>We list the current directory's files, then choose the size column, then calculate:</p>
+<pre><code>$ ls -l | awk &#39;{print $5}&#39; | num min max mean
+265 38684 2378.23</code></pre>
+<h3 id="how-busy-is-the-computer">How busy is the computer?</h3>
+<p>We print the current system processes, then choose the CPU column, then calculate:</p>
+<pre><code>$ ps aux | awk &#39;{print $3}&#39; | num min max mean
+0.0 100.1 0.513028</code></pre>
+<h3 id="how-wet-is-the-weather-in-new-york-city">How wet is the weather in New York City?</h3>
+<p>We download weather data for two days then parse humidities.</p>
+<pre><code>$ curl http://w1.weather.gov/data/obhistory/KNYC.html |
+tr &quot;&gt;&quot; &quot;\n&quot; | sed -n &#39;s/^\([0-9]\+\)%.*/\1/p&#39; |
+num min max mean
+32 84 58.4167</code></pre>
+<h3 id="how-much-is-an-apartment-in-san-francisco">How much is an apartment in San Francisco?</h3>
+<p>We connect to the Craigslist website then parse prices.</p>
+<pre><code>$ curl -s http://sfbay.craigslist.org/search/apa |
+tr &quot;&gt;&quot; &quot;\n&quot; | sed -n &#39;s/^\$\([0-9]\+\).*/\1/p&#39; |
+num mean
+2974.47</code></pre>
+<h3 id="use-gnu-parallel-to-use-multi-core-processing">Use GNU parallel to use multi-core processing</h3>
+<p>We use the <code>parallel</code> command to divide the work among cores.</p>
+<pre><code>$ cat data.txt | parallel --pipe num sum | num sum</code></pre>
+<p>
+<hr>
+<nav>
+<ul>
+<li>
+<b><a href="install.html">Prev Page: Install: how to download and set up</a></b>
+</li>
+<li>
+<b><a href="functions.html">Next Page: Functions: the complete list of all capabilities</a></b>
+</li>
+</ul>
+<p></nav></p>
+</body>
+</html>

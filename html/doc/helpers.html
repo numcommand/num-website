@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <link rel="icon" type="image/png" href="http://www.numcommand.com/assets/images/icons/num-icon-32.png">
+  <title>Helpers: commands that work well with Num</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="/assets/css/pandoc.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/retina.js/1.3.0/retina.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.7/jquery.lazyload.min.js"></script>
+</head>
+<body>
+
+<nav>
+  <b>
+    <a href="/">NumCommand.com</a> &bull;
+    <a href="/doc/install.html">Install</a> &bull;
+    <a href="/doc/tutorial.html">Tutorial</a> &bull;
+    <a href="/doc/functions.html">Functions</a> &bull;
+    <a href="/doc/helpers.html">Helpers</a> &bull;
+    <a href="/doc/articles.html">Articles</a> &bull;
+    <a href="/doc/faq.html">FAQ</a> &bull;
+    <a href="/doc/donate.html">Donate</a>
+  </b>
+</nav>
+<hr />
+
+<h1 id="helpers-commands-that-work-well-with-num">Helpers: commands that work well with Num</h1>
+<p>There are many commands that work with with Num; here are our favorites.</p>
+<h2 id="popular-commands">Popular commands</h2>
+<h3 id="awk">awk</h3>
+<p>The <code>awk</code> command typically processes text, fields, records, and data.</p>
+<p>Example to select column 2 then sum:</p>
+<pre><code>$ awk &#39;{print $2}&#39; data.txt
+2
+5
+8</code></pre>
+<p>Run <a href="http://linux.die.net/man/1/awk"><code>man awk</code></a> to see options for scanning, processing, input, output, etc.</p>
+<h3 id="cat">cat</h3>
+<p>The <code>cat</code> command typically prints the contents of a file.</p>
+<p>Example to print a file of data then sum:</p>
+<pre><code>$ cat data.txt
+1 2 3
+4 5 6
+7 8 9</code></pre>
+<p>Run <a href="http://linux.die.net/man/1/cat"><code>man cat</code></a> to see options for line numbering, blank line squeezing, etc.</p>
+<h3 id="comm">comm</h3>
+<p>The <code>comm</code> command selects or rejects lines common to two files.</p>
+<p>Example to compare lines of two files:</p>
+<pre><code>$ comm file1 file2</code></pre>
+<p>Run <a href="http://linux.die.net/man/1/comm"><code>man comm</code></a> to see options for columns, inputs, case, etc.</p>
+<h3 id="cut">cut</h3>
+<p>Cut a field</p>
+<p>Example:</p>
+<pre><code>cat data.txt | cut -f 2 -d &quot; &quot;
+2
+5
+8</code></pre>
+<p>Run <a href="http://linux.die.net/man/1/cut"><code>man cut</code></a> to see options for cutting by character, changing delimiters, suppressing lines, etc.</p>
+<h3 id="head">head</h3>
+<p>Get the head of the text, meaning the first lines of data or a file.</p>
+<p>Example:</p>
+<pre><code>$ cat data.txt | head -1
+1 2 3</code></pre>
+<p>Run <a href="http://linux.die.net/man/1/cat"><code>man head</code></a> to see options for line counts, using bytes, etc.</p>
+<h3 id="join">join</h3>
+<p>Join files by matching on fields.</p>
+<p>Example:</p>
+<pre><code>$ join file1 file2</code></pre>
+<p>Run <a href="http://linux.die.net/man/1/join"><code>man join</code></a> to see options for fields, lines, etc.</p>
+<h3 id="look">look</h3>
+<p>Display lines beginning with a given string.</p>
+<p>Example:</p>
+<pre><code>$ look foo data.txt</code></pre>
+<p>Run <a href="http://linux.die.net/man/1/look"><code>man look</code></a> to see options for alphanumeric, case, termination, etc.</p>
+<h3 id="paste">paste</h3>
+<p>Paste concatenates the corresponding lines of the given input files.</p>
+<p>Example:</p>
+<pre><code>$ paste file1 file2</code></pre>
+<p>Run <a href="http://linux.die.net/man/1/paste"><code>man paste</code></a> to see options for characters, delimiters, ordering, etc.</p>
+<h3 id="rev-reverse">rev (reverse)</h3>
+<p>The <code>rev</code> command reverses the characters of each line.</p>
+<p>Example:</p>
+<pre><code>$ echo &quot;hello&quot; | rev
+olleh</code></pre>
+<p>Run <a href="http://linux.die.net/man/1/rev"><code>man rev</code></a> to see options for files, standard input, etc.</p>
+<h3 id="seq-sequence">seq (sequence)</h3>
+<p>Sequence: generate a sequence of numbers.</p>
+<p>Example:</p>
+<pre><code>$ seq 3
+1
+2
+3</code></pre>
+<p>Run <a href="http://linux.die.net/man/1/seq"><code>man seq</code></a> to see options for number separators, zero padding, etc.</p>
+<h3 id="shuf-shuffle">shuf (shuffle)</h3>
+<p>Shuffle a list, a.k.a. randomize the order of list items.</p>
+<p>Example:</p>
+<pre><code>$ seq 3 | shuf
+3
+1
+2</code></pre>
+<p>Run <a href="http://linux.die.net/man/1/shuf"><code>man shuf</code></a> to see options for input range, sample number, head count, etc.</p>
+<h3 id="split">split</h3>
+<p>Split a file into pieces.</p>
+<p>Example:</p>
+<pre><code>$ split -a 1 -l 1 data.txt demo-
+creates new files demo-a, demo-b, demo-c</code></pre>
+<p>Run <a href="http://linux.die.net/man/1/split"><code>man split</code></a> to see options for splitting by bytes, lines, patterns, etc.</p>
+<p>Also see the <code>xlines</code> command on this page.</p>
+<h3 id="sort">sort</h3>
+<p>Sort the items.</p>
+<p>Example:</p>
+<pre><code>$ echo &quot;3\n2\n1&quot; | sort --numeric-sort
+1
+2
+3</code></pre>
+<p>Run <a href="http://linux.die.net/man/1/sort"><code>man sort</code></a> to see options for reverse, unique, field separator, etc.</p>
+<h3 id="tail">tail</h3>
+<p>Get the tail of the text, meaning the last lines of data or a file.</p>
+<p>Example:</p>
+<pre><code>$ cat data.txt | tail -1
+7 8 9</code></pre>
+<p>Run <a href="http://linux.die.net/man/1/tail"><code>man tail</code></a> to see options for removing headers, reversing, etc.</p>
+<h3 id="uniq-unique">uniq (unique)</h3>
+<p>Unique: make the items unique by removing duplicates.</p>
+<p>Example:</p>
+<pre><code>$ echo &quot;1\n1\n2\n2\n3\n3&quot; | uniq
+1
+2
+3</code></pre>
+<p>Run <a href="http://linux.die.net/man/1/uniq"><code>man unique</code></a> to see options for showing duplicates, skipping duplicates, ignoring fields, etc.</p>
+<h3 id="vipe-vi-pipe-editor">vipe (vi pipe editor)</h3>
+<p>The <code>vipe</code> command enables you to run your editor in the middle of a unix pipeline.</p>
+<p>Example:</p>
+<pre><code>$ command1 | vipe | command2</code></pre>
+<p>Run <a href="http://linux.die.net/man/1/vipe"><code>man vipe</code></a> to see options for setting your editor.</p>
+<h3 id="wc-word-count">wc (word count)</h3>
+<p>Word count: this typically counts lines, words, and characters.</p>
+<p>Example:</p>
+<pre><code>$ wc data.txt
+3 9 15</code></pre>
+<p>Run <a href="http://linux.die.net/man/1/wc"><code>man wc</code></a> to see options, and how to use languages other than English or character encodings other than ASCII.</p>
+<h3 id="xxd-hexdump">xxd (hexdump)</h3>
+<p>Make a hexdump.</p>
+<p>Example:</p>
+<pre><code>$ xxd hexfile.bin</code></pre>
+<p>Run <a href="http://linux.die.net/man/1/xxd"><code>man xxd</code></a> to see options for bits, bytes, ends, etc.</p>
+<h3 id="more-shell-commands">More shell commands</h3>
+<h2 id="shell-tools">Shell Tools</h2>
+<ul>
+<li><a href="http://freecode.com/projects/buffer">bfr: buffer streamer</a></li>
+<li><a href="https://github.com/google/crush-tools">CRUSH: Custom Reporting Utilities for SHell</a></li>
+<li><a href="https://github.com/thoughtbot/pick">Pick: fuzzy select anything</a></li>
+<li><a href="https://github.com/junegunn/fzf">fzf: fuzzy finder</a></li>
+<li><a href="http://nixar.work/">Nixar: New shell commands</a></li>
+<li><a href="https://github.com/eschulte/cla">CLA: An extendable tool suite for data analysis from the command line</a></li>
+<li><a href="http://www.ivarch.com/programs/pv.shtml">pv: pipe viewer</a></li>
+<li><a href="https://joeyh.name/code/moreutils/">sponge: soak up standard input and write to a file</a></li>
+<li><a href="http://www.computerhope.com/unix/tac.htm">tac: cat in reverse, to concatenate files to stdout, last line first</a></li>
+</ul>
+<h2 id="parallel-processing">Parallel processing</h2>
+<h3 id="parallel">parallel</h3>
+<p>GNU parallel provides multi-core processing that spreads work among your CPU cores.</p>
+<p>Example:</p>
+<pre><code>$ cat data.txt | parallel --pipe num sum | num sum
+45</code></pre>
+<p>Run <a href="http://linux.die.net/man/1/parallel"><code>man parallel</code></a> to see options for jobs, loads, delays, etc.</p>
+<h3 id="xlines">xlines</h3>
+<p>The <code>xlines</code> command is a combination of <code>xargs</code> and <code>split</code>, and similar to <code>parallel</code>. It takes a bunch of lines, and sends them round-robin to a number of child processes, using all your system's processors. Each process sees only one of the lines.</p>
+<p>Example:</p>
+<pre><code>$ cat data.txt | xlines -- num sum</code></pre>
+<p>To use this command, you need to download the code and compile it.</p>
+<p>See https://blog.goeswhere.com/2015/11/xlines/</p>
+<h2 id="formatting-inputoutput">Formatting input/output</h2>
+<h3 id="csv-comma-separated-values">CSV: comma separated values</h3>
+<p>CSV is a popular spreadsheet data exchange format. CSV uses a comma as the field separator, and a newline character as the record separator.</p>
+<p>Consider using a prebuilt tools such as a perl module, ruby gem, or command line tool such as <a href="http://csvkit.readthedocs.org/"><code>csvkit</code></a>, <a href="http://basepath.com/csv/"><code>csvtool</code></a>, <a href="https://github.com/google/crush-tools"><code>crush</code></a>, etc.</p>
+<h3 id="tsv-tab-separated-values">TSV: tab separated values</h3>
+<p>TSV is a popular spreadsheet data exchange format, also known as TDF (tab delimited format). TSV uses a tab character as the field separator, and a newline character as the record separator.</p>
+<p>To type a tab character on a Unix command line, you typically type &quot;&quot; which is double-quote, backslash, lowercase letter t, double-quote.</p>
+<h3 id="usv-unit-separated-values">USV: unit separated values</h3>
+<p>USV is our preferred spreadsheet data exchange format. USV uses the Unicode unit-separator character (U+241F) as the field separator, and the Unicode record-separator character (U+241E) as the record separator.</p>
+<p>To type Unicode on a Mac OSX system:</p>
+<ul>
+<li><p>Choose your system's keyboard named &quot;Unicode Hex Input&quot;.</p></li>
+<li><p>Hold down the option key and type the Unicode value (e.g. 2, 4, 1, F).</p></li>
+<li><p>The character appears.</p></li>
+</ul>
+<p>
+<hr>
+<p><nav> * <b><a href="functions.html">Prev Page: Functions: the complete list of all capabilities</a></b> * <b><a href="articles.html">Next Page: Aritcles &amp; Blogs</a></b> </nav></p>
+<br><br><br><br>
+</body>
+</html>

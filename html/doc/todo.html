@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <link rel="icon" type="image/png" href="http://www.numcommand.com/assets/images/icons/num-icon-32.png">
+  <title>To do: plans and ideas for our future versions</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="/assets/css/pandoc.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/retina.js/1.3.0/retina.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.lazyload/1.9.7/jquery.lazyload.min.js"></script>
+</head>
+<body>
+
+<nav>
+  <b>
+    <a href="/">NumCommand.com</a> &bull;
+    <a href="/doc/install.html">Install</a> &bull;
+    <a href="/doc/tutorial.html">Tutorial</a> &bull;
+    <a href="/doc/functions.html">Functions</a> &bull;
+    <a href="/doc/helpers.html">Helpers</a> &bull;
+    <a href="/doc/articles.html">Articles</a> &bull;
+    <a href="/doc/faq.html">FAQ</a> &bull;
+    <a href="/doc/donate.html">Donate</a>
+  </b>
+</nav>
+<hr />
+
+<h1 id="to-do-plans-and-ideas-for-our-future-versions">To do: plans and ideas for our future versions</h1>
+<h2 id="roadmap">Roadmap</h2>
+<p>Num top ten roadmap goals:</p>
+<ol type="1">
+<li><p>Create more functionality -- Such as for rankings, histograms, outliers, modes, jarque, dpo, and larger numbers.</p></li>
+<li><p>Create input-scrubbing capabilities -- Such as extracting numbers from mixed-type data, parsing numbers that look like currencies or percentages, handling missing data or malformed data, alerting if non-numbers are disrupting results, etc.</p></li>
+<li><p>Upgrade options for input and output -- Add columns and rows, headers and labels, output formats for HTML/JSON/JSONB, Unicode symbols, etc.</p></li>
+<li><p>Improve help -- Continue enhanching the Num website, tutorials, examples. Add an IRC channel for people who want help and want to contribute. Collect documentation as a PDF book focused on command-line statistics, because our experience shows this is an important way to drive adoption in larger organizations including academia and enterprises.</p></li>
+<li><p>Optimize speed -- Use caching, memoization, heuristics, and input hinting.</p></li>
+<li><p>Implement on more systems -- Build pure Mac OS X compatibility, and pure POSIX compatibility, and Cygwin compatibility for Windows. Package Num by using various package managers, including apt, brew, yum, etc.</p></li>
+<li><p>Create appendable statistics, such as taking an input of an existing count and mean, and appending new numbers to the statistic s. We believe this is a killer feature for combining batch-oriented processing with stream-oriented processing. Our testing so far shows that additive statistics can give speed increases of 2x-5x for the real-world data we're using in real-world projects.</p></li>
+<li><p>Implement in a fast compiled language -- We expect this make Num run 2x-5x faster, and also open up long term possibilities for advanced data structures. We hope to be able to jumpstart this by working with existing open source statistics programmers and code bases, such as datamash and qsort.</p></li>
+<li><p>Encourage use of Num -- Such as working with teaching groups (e.g. edX, Khan Academy, Coursera, Udacity), coding groups (e.g. RedHat, Canonical, Apple, Google), and publishing groups (e.g. Amazon, O'Reilly, Pragmatic). These organizations can help us achieve the best success for the project, and can also help the most people.</p></li>
+<li><p>Long term we want to advocate for Num to become a Unix command that is automatically installed on all Unix systems, much like common command line tools such as grep and sed. We want this to include working with system vendors and also with programmers who can make the code faster and better for cross-platform uses.</p></li>
+</ol>
+<h3 id="ideas-for-version-2.x-and-future">Ideas for version 2.x and future</h3>
+<p>Number sizes:</p>
+<ul>
+<li>Big numbers</li>
+<li>Research adding GNU MPFR and GNU MP (GMP).</li>
+<li>Research adding GNU Awk <code>--bignum</code> flag.</li>
+</ul>
+<p>Number functions:</p>
+<ul>
+<li><p><code>transpose</code></p></li>
+<li><p><code>reverse</code></p></li>
+<li><p><code>count-*</code>, <code>select-*</code>, <code>reject-*</code> for positive, negative, zero, even, odd, unique.</p></li>
+<li><p><code>frequency</code></p></li>
+<li><p>possibly filters based on quantile, such as <code>=q1</code>, <code>&gt;q1</code>, <code>&lt;q1</code></p></li>
+</ul>
+<p>Mathematics functions:</p>
+<ul>
+<li><p><code>absmin</code>, <code>absmax</code></p></li>
+<li><p><code>decrement</code></p></li>
+</ul>
+<p>List functions:</p>
+<ul>
+<li><p><code>randomize</code> a.k.a <code>shuffle</code></p></li>
+<li><p><code>collapse</code></p></li>
+</ul>
+<p>Statistics functions:</p>
+<ul>
+<li><p><code>antimode</code></p></li>
+<li><p><code>jarque</code></p></li>
+<li><p><code>dpo</code></p></li>
+</ul>
+<p>IO functions:</p>
+<ul>
+<li><p><code>input-header</code> - tell Num to ignore the first line of input because has header labels.</p></li>
+<li><p><code>output-header</code> - tell Num to print a first line of output that has header labels.</p></li>
+<li><p><code>format</code> a.k.a. <code>printf</code> - enable output string substitutions.</p></li>
+<li><p><code>zero-termination</code> - enable null-terminated data.</p></li>
+</ul>
+<p>Table functions:</p>
+<ul>
+<li><p><code>group</code></p></li>
+<li><p><code>filler</code></p></li>
+</ul>
+<p>Other functions such as those in other math stats tools.</p>
+<p>Optimizaitons:</p>
+<ul>
+<li>One-pass improved calculations as described by John D. Cook, for <code>mean</code>, <code>variance</code>, <code>standard-deviation</code>, <code>skewness</code>, <code>kurtosis</code>. See http://www.johndcook.com/blog/skewness_kurtosis/</li>
+</ul>
+<p>Quicksort:</p>
+<ul>
+<li><p>Research implementing the pivot by using Tukeys ninther, which is a median of medians, and may be a faster heuristic. See http://www.johndcook.com/blog/2009/06/23/tukey-median-ninther/</p></li>
+<li><p>Research implementing the small size sort using Shell sort, which is similar to insertion sort yet better for typical data. See https://en.wikipedia.org/wiki/Shellsort</p></li>
+<li><p>Research upgrading from single pivot to dual pivot, with the main benefit being faster speed because of fewer long scans.</p></li>
+<li><p>Research sorting code on comp.lang.awk: https://groups.google.com/forum/#!searchin/comp.lang.awk/quicksort/comp.lang.awk/c6IFVx3nxgA/jJjZrKYh7aoJ</p></li>
+</ul>
+<p>Real world examples to try:</p>
+<ul>
+<li>Parsing Apache logs to find % of successful requests, or bytes transferred, or frequency of items.</li>
+</ul>
+<p>Consider similar projects:</p>
+<ul>
+<li><p>RunAwk: https://github.com/cheusov/runawk</p></li>
+<li><p>SumoShell: https://github.com/SumoLogic/sumoshell</p></li>
+<li><p>Heap sort: https://groups.google.com/forum/#!searchin/comp.lang.awk/quicksort/comp.lang.awk/mJ0EiUZTb-o/8-kR6wVe-F8J</p></li>
+<li><p>Data Science at the Command Line: http://datascienceatthecommandline.com/</p></li>
+<li><p>http://practical-data-science.blogspot.com/2012/09/basic-unix-shell-commands-for-data.html</p></li>
+</ul>
+<p>
+<hr>
+<p><nav> * <b><a href="benchmarks.html">Prev Page: Benchmarks</a></b> * <b><a href="known-issues.html">Next Page: Known issues</a></b> </nav></p>
+<br><br><br><br>
+</body>
+</html>
