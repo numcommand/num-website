@@ -16,5 +16,6 @@ There's probably a better way to do this. Suggestions welcome.
 
 To publish the website:
 
-    $ bin/pandoc-site
-    $ bin/rsync-local-to-canon
+    $ cd bin
+    $ pandoc-site
+    $ rsync-local-to-canon
