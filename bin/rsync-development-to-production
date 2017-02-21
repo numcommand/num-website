@@ -1,1 +1,1 @@
-nice rsync -auHOxzvi ~/git/numcommand/num-website joel@numcommand.com:/var/www/www.numcommand.com/
+nice rsync -auHOxzvi ~/git/numcommand/num-website/ joel@numcommand.com:/var/www/www.numcommand.com/
